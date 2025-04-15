@@ -9,6 +9,7 @@
             font-family: Arial, sans-serif;
             background-color: #f9f9f9;
             padding-top: 50px;
+            transition: background-color 0.5s ease;
         }
 
         button {
@@ -48,18 +49,32 @@
             "You're super creative!"
         ];
 
-        let lastCompliment = "";
+        const colors = [
+            "#FFDDC1", // soft peach
+            "#D0F4DE", // mint green
+            "#FFB5E8", // light pink
+            "#B5EAD7", // turquoise
+            "#C9C9FF", // light purple
+            "#FFFFD1", // pale yellow
+            "#FFC1CC", // bubblegum
+            "#C1FFD7"  // soft green
+        ];
+
+        let lastIndex = -1;
 
         function showCompliment() {
             let randomIndex;
             do {
                 randomIndex = Math.floor(Math.random() * compliments.length);
-            } while (compliments[randomIndex] === lastCompliment);
+            } while (randomIndex === lastIndex);
 
-            lastCompliment = compliments[randomIndex];
+            lastIndex = randomIndex;
+
             document.getElementById("compliment").innerHTML = compliments[randomIndex];
+            document.body.style.backgroundColor = colors[randomIndex];
         }
     </script>
 
 </body>
 </html>
+
