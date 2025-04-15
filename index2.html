@@ -48,8 +48,15 @@
             "You're super creative!"
         ];
 
+        let lastCompliment = "";
+
         function showCompliment() {
-            const randomIndex = Math.floor(Math.random() * compliments.length);
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * compliments.length);
+            } while (compliments[randomIndex] === lastCompliment);
+
+            lastCompliment = compliments[randomIndex];
             document.getElementById("compliment").innerHTML = compliments[randomIndex];
         }
     </script>
